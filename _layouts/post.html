@@ -12,21 +12,19 @@
 	<body>
 		<div id="logo"><h1><a href="/">1901防糊涂笔记</a></h1></div>
 		<div id="wrapper">
-			<div id="content" class="index">
-				<div id="sidebar">
-					<ul>
-						<li><a href="/index.html">我的笔记</a></li>
-					</ul>
-				</div>
-
-				<div id="main">
-				{{ content }}
-				</div>
-
-				<div id="footer">
-					<span style="color:#999999;font-size:12px"><em>1901 at github.com</em></span>
+			<div id="content">
+				<h2>{{ page.title }}</h2>
+				<div class="cnt">
+					{{ content }}
+					<br />
+					________________________________________________
+					<p></p>
 				</div>
 			</div>
-        </div>
+
+			<div id="footer">
+				<span style="color:#999999;font-size:12px"><em>1901 at github.com</em></span>
+			</div>
+		</div>
 	</body>
 </html>
