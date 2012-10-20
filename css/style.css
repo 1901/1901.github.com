@@ -20,7 +20,7 @@ caption,th {
 	text-align:left;
 }
 h1,h2,h3,h4,h5,h6 {
-/*	font-size:100%; */
+	font-size:100%;
 	font-weight:normal;
 }
 q:before,q:after {
@@ -190,7 +190,7 @@ h1 a {
 */
 h2, h3, h4, h5, h6 {
 	font-weight:900;
-	line-height:100%;
+/*	line-height:100%; */
 }
 h2 {
 	font-size:35px;
