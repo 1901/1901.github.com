@@ -3,8 +3,6 @@ layout: post
 title: sqlite基础知识
 ---
 
-sqlite基础知识
-
 sqlite官方网站：[www.sqlite.org](http://www.sqlite.org "sqlite")
 
 ##### 启动sqlite(打开终端，输入命令)
