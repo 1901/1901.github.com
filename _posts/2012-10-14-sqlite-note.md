@@ -7,7 +7,7 @@ sqlite官方网站：[www.sqlite.org](http://www.sqlite.org "sqlite")
 
 ##### 启动sqlite(打开终端，输入命令)
     打开当前目录下的test.db数据库，如果没有这个文件刚创建一个数据库。
-    `$sqlite3 test.db`
+    $sqlite3 test.db
     
 
 #####-- 查看sqlite帮助内容
@@ -36,7 +36,7 @@ sqlite官方网站：[www.sqlite.org](http://www.sqlite.org "sqlite")
     	date DATE
     );
     {% endhighlight %}
-
+    
 *使用自增长字段时，引擎会自动产生一个sqlite_sequence表，用于记录每个表的自增长字段的已使用的最大值。*
 
 #####-- 用户可以使用下面的查询语句查询各个表自动增长的记录。
