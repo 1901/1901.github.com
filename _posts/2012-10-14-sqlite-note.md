@@ -7,7 +7,7 @@ sqlite官方网站：[www.sqlite.org](http://www.sqlite.org "sqlite")
 
 ##### 启动sqlite(打开终端，输入命令)
     打开当前目录下的test.db数据库，如果没有这个文件刚创建一个数据库。
-    $sqlite3 test.db
+    `$sqlite3 test.db`
     
 
 #####-- 查看sqlite帮助内容
