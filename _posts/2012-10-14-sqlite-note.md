@@ -19,7 +19,7 @@ sqlite官方网站：[www.sqlite.org](http://www.sqlite.org "sqlite")
 
 
 #####-- 执行一个sql文件
-    sqlite> .read f.sql
+`sqlite> .read f.sql`
 
 
 #####-- 查看建表语句，指定参数则查看指定表的建表语句，不指定参数时查看所有表的建表语句
@@ -28,12 +28,14 @@ sqlite官方网站：[www.sqlite.org](http://www.sqlite.org "sqlite")
 
 
 #####-- 建表示例
+{% highlight sql %}
     CREATE TABLE kxtest(
     	id INTEGER PRIMARY KEY AUTOINCREMENT, 
     	name VARCHAR(100) NOT NULL,
     	sex INTEGER DEFAULT 0,
     	date DATE
     );
+{% endhighlight %}
 
 *使用自增长字段时，引擎会自动产生一个sqlite_sequence表，用于记录每个表的自增长字段的已使用的最大值。*
 
