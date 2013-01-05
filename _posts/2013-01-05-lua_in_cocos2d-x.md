@@ -46,36 +46,36 @@ title: 在cocos2d-x中使用LUA
 	
 	
 ####7、在LUA中调用C++的对象及对象的方法
-	1）、在C++中编写一个C++的类。
-    {% highlight c++ %}
-	#ifndef _HELLO_CLASS_CTEST_
-	#define _HELLO_CLASS_CTEST_
+1）、在C++中编写一个C++的类。
+{% highlight c++ %}
+#ifndef _HELLO_CLASS_CTEST_
+#define _HELLO_CLASS_CTEST_
+
+#include <iostream>
+
+class CTest
+{
+public:
+	int v;
 	
-	#include <iostream>
+public:
+	CTest() { v = 1; }
+	CTest(int a) { v = a; }
 	
-	class CTest
+	void test()
 	{
-	public:
-		int v;
-		
-	public:
-		CTest() { v = 1; }
-		CTest(int a) { v = a; }
-		
-		void test()
-		{
-			printf("[CTest::test]hello,tolua++|(%d).\n", this->v);
-		}
-	
-	};
-	
-	#endif
-	{% endhighlight %}
+		printf("[CTest::test]hello,tolua++|(%d).\n", this->v);
+	}
+
+};
+
+#endif
+{% endhighlight %}
 		
 	2）、编写PKG文件。
+	{% highlight c++ %}
 	// 如果要包含C/C++的头文件，使用 $#include "xxx.h"
 	// 如果要包含其它的PKG文件，使用 $pfile "xxx.pkg"
-	{% highlight c++ %}
 	$#include "CTest.h"
 
 	class CTest
