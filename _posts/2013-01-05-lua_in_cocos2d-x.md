@@ -28,7 +28,7 @@ luaEngine->executeGlobalFunction("test");	// 执行LUA中的test方法
 
 // lua function
 function test()
-	print("I'm lua function")
+    print("I'm lua function")
 end
 {% endhighlight %}
 
