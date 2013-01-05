@@ -3,20 +3,28 @@ layout: post
 title: 在cocos2d-x中使用LUA
 ---
 ####1、注册LUA脚本引擎
-    CCLuaEngine* pEngine = CCLuaEngine::defaultEngine();
-    CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
+{% highlight c++ %}
+CCLuaEngine* pEngine = CCLuaEngine::defaultEngine();
+CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
+{% endhighlight %}
 
 
 ####2、执行一段LUA字符串
-    luaEngine->executeString("print(\"test executeString\\n\")");
+{% highlight c++ %}
+luaEngine->executeString("print(\"test executeString\\n\")");
+{% endhighlight %}
 
 
 ####3、执行一个LUA文件
-    luaEngine->executeScriptFile(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("hello.lua"));
+{% highlight c++ %}
+luaEngine->executeScriptFile(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("hello.lua"));
+{% endhighlight %}
 
 
 ####4、执行LUA中的一个全局方法
-	luaEngine->executeGlobalFunction("test");	// 执行LUA中的test方法
+{% highlight c++ %}
+luaEngine->executeGlobalFunction("test");	// 执行LUA中的test方法
+{% endhighlight %}
 
 
 ####5、执行LUA中的某个带参数的方法并获取返回值
@@ -33,12 +41,17 @@ printf("result is %f\n", result);
 
 
 ####6、在LUA中执行C++中的一个全局方法
-1）、在C++中注册方法：lua_register(state, "lua_add", add); // 第二个参数为将在LUA中用到的方法名，第三个参数为C++中对应的全局函数
+1）、在C++中注册方法：
+        
+       lua_register(state, "lua_add", add); // 第二个参数为将在LUA中用到的方法名，第三个参数为C++中对应的全局函数
 
-2）、在LUA中调用方法：lua_add(2, 3);
+2）、在LUA中调用方法：
+    
+    lua_add(2, 3);
 	
-第一步中的add方法示例：
+
 {% highlight c++ %}
+// 第一步中的add方法示例：
 int add(lua_State* L)
 {
     int a = lua_tointeger(L, 1);
