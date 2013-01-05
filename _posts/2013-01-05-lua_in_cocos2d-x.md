@@ -20,31 +20,34 @@ title: 在cocos2d-x中使用LUA
 
 
 ####5、执行LUA中的某个带参数的方法并获取返回值
-	lua_State* state = luaEngine->getLuaState();
-	lua_getglobal(state, "myadd");	//查找lua_add函数,并压入栈底    
-	luaEngine->pushInt(5);		//函数参数1  
-	luaEngine->pushFloat(6.5);	//函数参数2
-	lua_pcall(state, 2, 1, 0);	//调用myadd函数，同时会对myadd及两个参加进行出栈操作,并压入返回值
-	float result = lua_tonumber(state, -1);	//从栈中取回返回值   
-	lua_pop(state, 1);	//清栈，由于当前只有一个返回值 
-	printf("result is %f\n", result);
+{% highlight c++ %}
+lua_State* state = luaEngine->getLuaState();
+lua_getglobal(state, "myadd");	//查找lua_add函数,并压入栈底    
+luaEngine->pushInt(5);		//函数参数1  
+luaEngine->pushFloat(6.5);	//函数参数2
+lua_pcall(state, 2, 1, 0);	//调用myadd函数，同时会对myadd及两个参加进行出栈操作,并压入返回值
+float result = lua_tonumber(state, -1);	//从栈中取回返回值   
+lua_pop(state, 1);	//清栈，由于当前只有一个返回值 
+printf("result is %f\n", result);
+{% endhighlight %}
 
 
 ####6、在LUA中执行C++中的一个全局方法
-	1）、在C++中注册方法：lua_register(state, "lua_add", add); // 第二个参数为将在LUA中用到的方法名，第三个参数为C++中对应的全局函数
-	2）、在LUA中调用方法：lua_add(2, 3);
+1）、在C++中注册方法：lua_register(state, "lua_add", add); // 第二个参数为将在LUA中用到的方法名，第三个参数为C++中对应的全局函数
+
+2）、在LUA中调用方法：lua_add(2, 3);
 	
-	第一步中的add方法示例：
-	{% highlight c++ %}
-	int add(lua_State* L)
-	{
-		int a = lua_tointeger(L, 1);
-		int b = lua_tointeger(L, 2);
-		
-		lua_pushinteger(L, a + b);	//入栈返回值
-		return 1;	//1表示压入栈数据个数 
-	}
-	{% endhighlight %}
+第一步中的add方法示例：
+{% highlight c++ %}
+int add(lua_State* L)
+{
+    int a = lua_tointeger(L, 1);
+    int b = lua_tointeger(L, 2);
+	
+	lua_pushinteger(L, a + b);	//入栈返回值
+	return 1;	//1表示压入栈数据个数 
+}
+{% endhighlight %}
 	
 	
 ####7、在LUA中调用C++的对象及对象的方法
@@ -89,10 +92,8 @@ class CTest
 };
 {% endhighlight %}
 		
-
-		
-		
 3）、执行tolua++，生成lua_CTest.cpp文件。
+    
     tolua++ -n CTest -o lua_CTest.cpp CTest.pkg
 		
 4）、将生成的文件加入到工程。
