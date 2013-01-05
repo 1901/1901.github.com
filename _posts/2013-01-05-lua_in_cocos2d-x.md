@@ -24,6 +24,12 @@ luaEngine->executeScriptFile(CCFileUtils::sharedFileUtils()->fullPathFromRelativ
 ####4、执行LUA中的一个全局方法
 {% highlight c++ %}
 luaEngine->executeGlobalFunction("test");	// 执行LUA中的test方法
+
+
+// lua function
+function test()
+	print("I'm lua function")
+end
 {% endhighlight %}
 
 
@@ -37,21 +43,18 @@ lua_pcall(state, 2, 1, 0);	//调用myadd函数，同时会对myadd及两个参�
 float result = lua_tonumber(state, -1);	//从栈中取回返回值   
 lua_pop(state, 1);	//清栈，由于当前只有一个返回值 
 printf("result is %f\n", result);
+
+
+// lua function
+function myadd(x, y)
+    return x + y
+end
 {% endhighlight %}
 
 
 ####6、在LUA中执行C++中的一个全局方法
-1）、在C++中注册方法：
-        
-       lua_register(state, "lua_add", add); // 第二个参数为将在LUA中用到的方法名，第三个参数为C++中对应的全局函数
-
-2）、在LUA中调用方法：
-    
-    lua_add(2, 3);
-	
-
+1）、编写C++中的全局方法
 {% highlight c++ %}
-// 第一步中的add方法示例：
 int add(lua_State* L)
 {
     int a = lua_tointeger(L, 1);
@@ -61,6 +64,17 @@ int add(lua_State* L)
 	return 1;	//1表示压入栈数据个数 
 }
 {% endhighlight %}
+
+2）、在C++中注册方法：
+        
+       lua_register(state, "lua_add", add); // 第二个参数为将在LUA中用到的方法名，第三个参数为C++中对应的全局函数
+
+3）、在LUA中调用方法：
+    
+    lua_add(2, 3);
+	
+
+
 	
 	
 ####7、在LUA中调用C++的对象及对象的方法
